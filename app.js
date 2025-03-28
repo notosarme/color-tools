@@ -5,6 +5,7 @@ const colorThief = new ColorThief();
 const imgForm = {
   form: document.getElementById("form"),
   imgDiv: document.getElementById("imgDiv"),
+  paletteNumber: 5,
 
   init: () => { 
     form.reset(); 
@@ -14,9 +15,19 @@ const imgForm = {
     })
   },
 
-  fileSubmit: () => {
-    let uploadImage = form.firstElementChild.files[0];
+  getImageColors: (img) => {
+    let colors;
+    if (imgForm.paletteNumber == 1 ) {
+      colors = colorThief.getColor(img);
+    } else {
+      colors = colorThief.getPalette(img, imgForm.paletteNumber); // Get 2-15
+    }
+    colorFunction.displayColors(colors);
+  },
 
+  fileSubmit: () => {
+    let uploadImage = form[0].files[0];
+    imgForm.paletteNumber = Number(form[1].value);
     // Validate if a file was uploaded
     if (!uploadImage) {
       console.error("No file selected");
@@ -33,15 +44,14 @@ const imgForm = {
     colorFunction.getBase64(uploadImage)
     .then((data) => {
       img.src = data;
+      imgDiv.innerHTML = "";
       imgDiv.appendChild(img);
       
       if (img.complete) {
-        const colors = colorThief.getPalette(img, 5); // Get 5 main colors
-        colorFunction.displayColors(colors);
+        imgForm.getImageColors(img);
       } else {
         img.addEventListener('load', function() {
-          const colors = colorThief.getPalette(img, 5); // Get 5 main colors
-          colorFunction.displayColors(colors);
+          imgForm.getImageColors(img);
         });
       }
     });
@@ -52,6 +62,14 @@ const colorFunction = {
   displayColors: (colors) => {
     const colorsDiv = document.getElementById('colors');
     colorsDiv.innerHTML = ''; // Clear previous colors
+    if (typeof colors[0] == "number"){
+      const hexColor = colorFunction.rgbToHex(colors[0], colors[1], colors[2]);
+      const div = document.createElement('div');
+      div.className = 'color-box';
+      div.style.backgroundColor = hexColor;
+      div.title = hexColor;
+      colorsDiv.appendChild(div);
+    }
     colors.forEach(color => {
       const hexColor = colorFunction.rgbToHex(color[0], color[1], color[2]);
       const div = document.createElement('div');
