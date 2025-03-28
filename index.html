@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colour Picker</title>
+  <script type="module" src="/app.js" defer></script>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+    #colors { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
+    .color-box { width: 50px; height: 50px; border-radius: 5px; }
+    #imgDiv img { max-width: 400px; }
+</style>
+</head>
+<body>
+  <h2>Upload an Image to Extract Colors</h2>
+  <div id="image-picker">
+    <form id="form">
+      <input type="file" name="file" id="file" accept="image/*">
+      <input type="submit" value="submit" id="submitBtn">
+    </form>
+
+    <div id="imgDiv"></div>
+    <div id="colors"></div>
+  </div>
+    <!--<input type="file" id="fileInput" accept="image/*">
+    <canvas id="canvas" style="display: none;"></canvas>
+    <img id="image" style="max-width: 100%; display: none;">
+    <div id="colors"></div>-->
+  
+</body>
+</html>
