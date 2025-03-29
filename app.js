@@ -100,9 +100,10 @@ const colorFunction = {
       reader.onerror = (error) => reject(error);
     });
   },
-  rgbToHex: (r, g, b) => {
-    return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase()}`;
-  }
+  rgbToHex: (r, g, b) => '#' + [r, g, b].map(x => {
+    const hex = x.toString(16)
+    return hex.length === 1 ? '0' + hex : hex
+  }).join('')
 }
 
 
