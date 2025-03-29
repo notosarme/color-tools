@@ -9,6 +9,12 @@ const imgForm = {
 
   init: () => { 
     form.reset(); 
+    document.getElementById("resetBtn").addEventListener("click", (ev) => {
+      ev.preventDefault();
+      form.reset();
+      imgDiv.innerHTML = "";
+      document.getElementById('colors').innerHTML = "";
+    })
     document.getElementById("submitBtn").addEventListener("click", (ev) => {
       ev.preventDefault();
       imgForm.fileSubmit();
@@ -65,18 +71,25 @@ const colorFunction = {
     if (typeof colors[0] == "number"){
       const hexColor = colorFunction.rgbToHex(colors[0], colors[1], colors[2]);
       const div = document.createElement('div');
+      const p = document.createElement('p');
+      p.innerHTML = hexColor;
       div.className = 'color-box';
       div.style.backgroundColor = hexColor;
       div.title = hexColor;
       colorsDiv.appendChild(div);
+      div.appendChild(p);
+      return;
     }
     colors.forEach(color => {
       const hexColor = colorFunction.rgbToHex(color[0], color[1], color[2]);
       const div = document.createElement('div');
+      const p = document.createElement('p');
+      p.innerHTML = hexColor;
       div.className = 'color-box';
       div.style.backgroundColor = hexColor;
       div.title = hexColor;
       colorsDiv.appendChild(div);
+      div.appendChild(p);
     });
   },
   getBase64: (file) => {

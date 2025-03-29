@@ -1,0 +1,111 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  text-align: center;
+}
+#colors {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  text-shadow: #fff 1px 0 10px;
+  flex-wrap: wrap;
+  max-height: 500px;
+}
+.color-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0 2rem;
+  border-radius: 5px;
+}
+#imgDiv img {
+  max-width: 400px;
+}
+#paletteDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* FORM */
+#form {
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.formElement {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.formElement label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.formElement input[type="file"] {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.formElement input[type="number"] {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.formElement button,
+.formElement input[type="submit"] {
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.formElement button {
+  background-color: #ff6f61;
+  color: white;
+}
+
+.formElement button:hover {
+  background-color: #e55a50;
+}
+
+.formElement input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+}
+
+.formElement input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.formElement input[type="file"] {
+  background-color: #fff;
+}
+
+.formElement input[type="number"] {
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 900px) {
+  #colors {
+    flex-direction: row;
+    justify-content: center;
+    max-height: auto;
+  }
+}

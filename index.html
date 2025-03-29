@@ -1,54 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Colour Picker</title>
-  <script type="module" src="./app.js" defer></script>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    #colors { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
-    .color-box { width: 50px; height: 50px; border-radius: 5px; }
-    #imgDiv img { max-width: 400px; }
-    #form { 
-      display: flex;
-      flex-direction: column;
-      margin: 0.5rem;
-      width: 450px;
-      gap: 0.5rem;
-    }
-    .formElement {
-      display: flex;
-      justify-content: space-between;
-      gap: 80px;
-    }
-    input { flex: 1; }
-</style>
-</head>
-<body>
-  <h2>Upload an Image to Extract Colors</h2>
-  <div id="image-picker">
-    <form id="form">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colour Picker</title>
+    <script type="module" src="./app.js" defer></script>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <h2>Upload an Image to Extract Colors</h2>
+    <div id="image-picker">
+      <form id="form">
+        <span class="formElement">
+          <label for="file">Select an image: </label>
+          <input type="file" name="file" id="file" accept="image/*" />
+        </span>
 
-      <span class="formElement">
-        <label for="file">Select an image: </label>
-        <input type="file" name="file" id="file" accept="image/*">
-      </span>
-      
-      <span class="formElement">
-        <label for="palette">Number of colors: </label>
-        <input type="number" name="palette" id="palette" min="1" max="15" value="5" />
-      </span>
+        <span class="formElement">
+          <label for="palette">Number of colors: </label>
+          <input
+            type="number"
+            name="palette"
+            id="palette"
+            min="1"
+            max="15"
+            value="5"
+          />
+        </span>
 
-      <span class="formElement">
-        <button>Reset</button>
-        <input type="submit" value="submit" id="submitBtn">
-      </span>
-    </form>
+        <span class="formElement">
+          <button id="resetBtn">Reset</button>
+          <input type="submit" value="Submit" id="submitBtn" />
+        </span>
+      </form>
 
-    <div id="imgDiv"></div>
-    <div id="colors"></div>
-  </div>
-  
-</body>
+      <span id="paletteDisplay">
+        <div id="imgDiv"></div>
+        <div id="colors"></div>
+      </span>
+    </div>
+  </body>
 </html>
